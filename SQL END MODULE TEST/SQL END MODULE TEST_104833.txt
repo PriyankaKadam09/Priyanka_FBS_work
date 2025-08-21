@@ -1,0 +1,193 @@
+
+SQL END MODULE TEST
+
+Name - Priyanka Vilas Kadam
+Roll no - FRN-09J0525/020 
+SET - B
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q1]  Retrieve the names of all customers from the `Customers` table, sorted in alphabetical order.
+
+ SELECT Customers_Name
+ FROM Customers
+ORDER BY Customers_Name ASC;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2] Fetch the top 10 most expensive products from the `Products` table.
+
+SELECT Product_Name,price
+FROM products
+ORDER BY price DESC
+Limit 10;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q3] Write a query to get the second-highest salary from the `Employees` table.
+ 
+SELECT salary 
+FROM employees
+ORDER BY salary DESC
+Limit 1 Offset 1;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q4] Get the total count of customers from each city in the `Customers` table.
+
+SELECT city, count (*) AS Total_Customers
+FROM customers
+GROUP BY cityl;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q5] Retrieve department-wise total salary from the `Employees` table but only include
+departments where the total salary is greater than 2,00,000.
+ 
+SELECT Department, SUM(salary)
+Total_Salary
+FROM Employees
+GROUP BY Department
+Having (salary) > 200000;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q6]  Extract only the last four characters of the `phone_number` column and first three characters
+from `customerName` columns from the `Customers` table.
+
+SELECT Right(phone_number, 4)  AS last_four_digit,
+Left (Customers_Name , 3) AS  first_three_chars
+FROM customers;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q7]  Write a query to retrieve products where the `product_name` contains "Pro"
+
+SELECT  * FROM product
+where product_name LIKE  '% pro% ' ;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q8]  Fetch the total number of students per course from the `Students` table, only for courses that
+have at least 30 students enrolled.
+
+SELECT Courses, COUNT (*) AS total_students
+FROM students
+GROUP BY Course
+Having COUNT (*) >= 30;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q9]  Write an SQL query to find the number of orders placed in each month of the year.
+
+SELECT  month(order_date) AS (order_month),
+COUNT (*) AS total_orders
+FROM orders
+GROUP BY month(order_date);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q10]  Get the highest and lowest salary per department from the `Employees` table.
+
+SELECT Department, 
+MAX(salary) AS highest_salary,
+MIN(salary) AS lowest_salary,
+FROM employees
+GROUP BY department;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q11]  What does the following query return?
+
+SELECT SUBSTRING('Database', 1, 4);
+ a) Data
+ b) tabase
+ c) DataB
+ d) Error
+
+->  a) data
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+Q12]  which clauses is used to sort the result in descending order ?
+
+a) ORDER BY DESC
+ b) ORDER BY ASC
+ c) SORT BY DESC
+ d) GROUP BY DESC
+
+-> ORDER BY DESC;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q13] what is the default sorting order of 'ORDER BY' if no direction (ASC / DESC) is specified ?
+
+a) ASC
+ b) DESC
+ c) No specific order
+ d) Error
+
+-> ASC
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q14]  what will be the output of the following query ?
+
+a) 15.67
+ b) 15.68
+ c) 15.7
+ d) 16
+
+SELECT ROUND (15.678,2);
+
+-> 15.68
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q15] which SQL funtion is used to count the number of four row in a table ? 
+
+a) TOTAL()
+ b) COUNT()
+ c) SUM()
+ d) NUMBER()
+
+-> COUNT ()
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q16]  You have two tables:
+• Orders with columns: order_id, customer_id, order_date, total_amount.
+• Customers with columns: customer_id, customer_name.
+• O/P- customer_id, customer_name, avg_order_value
+Write an SQL query to find the average order value (total_amount) for each customer. Only
+include customers who have made more than 2 orders.
+
+SELECT c.customer_id,
+c.customer_name,
+AVG  (o.total_amount) AS avg_order_order
+FROM customers c
+join orders o
+ON c.customer_id, c.customer_name
+HAVING COUNT (o.order_id)>2;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q17]  You have two tables:
+• Products with columns: product_id, product_name.
+• Sales with columns: sale_id, product_id, sale_date, amount.
+• O/P- product_id | product_name | sales_count
+Write an SQL query to find the number of sales made for each product. Only include products
+with more than 50 sales
+
+SELECT p.product_id,
+COUNT (s.sale_id) AS sales_count
+FROM products p 
+JOIN sales s
+ON p.product_id, p.product_name
+HAVING COUNT (s.sales_id) > 50;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
